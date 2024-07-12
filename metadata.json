@@ -1,12 +1,12 @@
 {
-  "name": "attachmentgenie-example",
-  "version": "5.0.0",
+  "name": "attachmentgenie-puppet_dynamodb_otp",
+  "version": "1.0.0",
   "author": "bram vogelaar <bram@attachmentgenie.com>",
-  "summary": "Setup example",
+  "summary": "Setup puppet-dynamodb-otp",
   "license": "MIT",
-  "source": "https://github.com/attachmentgenie/attachmentgenie-example.git",
-  "project_page": "https://github.com/attachmentgenie/attachmentgenie-example",
-  "issues_url": "https://github.com/attachmentgenie/attachmentgenie-example/issues",
+  "source": "https://github.com/attachmentgenie/attachmentgenie-puppet_dynamodb_otp.git",
+  "project_page": "https://github.com/attachmentgenie/attachmentgenie-puppet_dynamodb_otp",
+  "issues_url": "https://github.com/attachmentgenie/attachmentgenie-puppet_dynamodb_otp/issues",
   "dependencies": [
     {
       "name": "puppet/archive",
@@ -44,7 +44,7 @@
     }
   ],
   "tags": [
-    "example"
+    "puppet-dynamodb-otp"
   ],
   "pdk-version": "3.2.0",
   "template-url": "pdk-default#3.2.0",

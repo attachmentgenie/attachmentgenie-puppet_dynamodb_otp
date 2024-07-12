@@ -9,7 +9,7 @@
 # Learn more about module testing here:
 # http://docs.puppetlabs.com/guides/tests_smoke.html
 #
-class { 'example':
-  archive_source => 'https://github.com/attachmentgenie/golang-example/releases/download/v0.2.0/golang-example_0.2.0_linux_x86_64.tar.gz',
+class { 'puppet_dynamodb_otp':
+  archive_source => 'https://github.com/attachmentgenie/puppet-dynamodb-otp/releases/download/v0.1.0/puppet-dynamodb-otp_0.1.0_linux_x86_64.tar.gz',
   install_method => 'archive',
 }

@@ -1,55 +1,32 @@
-# Class to install example.
+# Class to install puppet-dynamodb-otp.
 #
 # @api private
-class example::install {
-  if $example::manage_user {
-    user { 'example':
-      ensure => present,
-      home   => $example::install_dir,
-      name   => $example::user,
-    }
-    group { 'example':
-      ensure => present,
-      name   => $example::group,
-    }
-  }
-  case $example::install_method {
+class puppet_dynamodb_otp::install {
+  case $puppet_dynamodb_otp::install_method {
     'package': {
-      if $example::manage_repo {
-        class { 'example::repo': }
-      }
-      package { 'example':
-        ensure => $example::package_version,
-        name   => $example::package_name,
+      package { 'puppet-dynamodb-otp':
+        ensure => $puppet_dynamodb_otp::package_version,
+        name   => $puppet_dynamodb_otp::package_name,
       }
     }
     'archive': {
-      file { 'example install dir':
+      file { 'puppet-dynamodb-otp install dir':
         ensure => directory,
-        group  => $example::group,
-        owner  => $example::user,
-        path   => $example::install_dir,
-      }
-      if $example::manage_user {
-        File[$example::install_dir] {
-          require => [Group['example'],User['example']],
-        }
+        path   => $puppet_dynamodb_otp::install_dir,
       }
 
-      archive { 'example archive':
+      archive { 'puppet-dynamodb-otp archive':
         cleanup      => true,
-        creates      => "${example::install_dir}/example",
+        creates      => "${puppet_dynamodb_otp::install_dir}/puppet-dynamodb-otp",
         extract      => true,
-        extract_path => $example::install_dir,
-        group        => $example::group,
-        path         => '/tmp/example.tar.gz',
-        source       => $example::archive_source,
-        user         => $example::user,
-        require      => File['example install dir'],
+        extract_path => $puppet_dynamodb_otp::install_dir,
+        path         => '/tmp/puppet-dynamodb-otp.tar.gz',
+        source       => $puppet_dynamodb_otp::archive_source,
+        require      => File['puppet-dynamodb-otp install dir'],
       }
     }
     default: {
-      fail("Installation method ${example::install_method} not supported")
+      fail("Installation method ${puppet_dynamodb_otp::install_method} not supported")
     }
   }
 }

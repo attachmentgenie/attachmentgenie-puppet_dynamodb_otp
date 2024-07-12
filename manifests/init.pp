@@ -1,43 +1,27 @@
-# Class to install and configure example.
+# Class to install and configure puppet-dynamodb-otp.
 #
-# Use this module to install and configure example.
+# Use this module to install and configure puppet-dynamodb-otp.
 #
-# @example Declaring the class
-#   include ::example
+# @puppet-dynamodb-otp Declaring the class
+#   include ::puppet-dynamodb-otp
 #
-# @param archive_source Location of example binary release.
-# @param group Group that owns example files.
-# @param install_dir Location of example binary release.
-# @param install_method How to install example.
-# @param manage_repo Manage the example repo.
-# @param manage_service Manage the example service.
-# @param manage_user Manage example user and group.
+# @param archive_source Location of puppet-dynamodb-otp binary release.
+# @param install_dir Location of puppet-dynamodb-otp binary release.
+# @param install_method How to install puppet-dynamodb-otp.
+# @param manage_dropin Manage the puppet-dynamodb-otp dropin.
 # @param package_name Name of package to install.
-# @param package_version Version of example to install.
-# @param service_name Name of service to manage.
-# @param service_provider Init system that is used.
-# @param service_ensure The state of the service.
-# @param user User that owns example files.
-class example (
-  String[1] $group,
+# @param package_version Version of puppet-dynamodb-otp to install.
+class puppet_dynamodb_otp (
   Stdlib::Absolutepath $install_dir,
   Enum['archive','package'] $install_method ,
-  Boolean $manage_repo,
-  Boolean $manage_service,
-  Boolean $manage_user,
+  Boolean $manage_dropin,
   String[1] $package_name,
   String[1] $package_version,
-  String[1] $service_name,
-  String[1] $service_provider,
-  Enum['running','stopped'] $service_ensure,
-  String[1] $user,
   Optional[Stdlib::HTTPUrl] $archive_source = undef,
 ) {
-  contain 'example::install'
-  contain 'example::config'
-  contain 'example::service'
+  contain 'puppet_dynamodb_otp::install'
+  contain 'puppet_dynamodb_otp::dropin'
 
-  Class['example::install']
-  -> Class['example::config']
-  ~> Class['example::service']
+  Class['puppet_dynamodb_otp::install']
+  -> Class['puppet_dynamodb_otp::dropin']
 }
