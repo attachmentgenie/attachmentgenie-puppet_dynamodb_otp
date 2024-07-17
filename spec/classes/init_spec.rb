@@ -6,6 +6,12 @@ describe 'puppet_dynamodb_otp' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) { facts }
+      let(:params) { { aws_region: 'us-east-1' } }
+      let(:pre_condition) do
+        [
+          'service { "puppetserver": ensure => running, }',
+        ]
+      end
 
       context 'with defaults for all parameters' do
         it { is_expected.to contain_class('puppet_dynamodb_otp') }

@@ -1,1 +1,3 @@
-<%- | Array $rules | -%>
+<%- | String $aws_region | -%>
+[Service]
+Environment="AWS_REGION=<%= $aws_region %>"

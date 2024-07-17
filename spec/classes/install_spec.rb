@@ -6,12 +6,18 @@ describe 'puppet_dynamodb_otp' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) { facts }
+      let(:pre_condition) do
+        [
+          'service { "puppetserver": ensure => running, }',
+        ]
+      end
 
       context 'with archive_source set to special.tar.gz' do
         let(:params) do
           {
             archive_source: 'special.tar.gz',
             install_method: 'archive',
+            aws_region: 'us-east-1',
           }
         end
 
@@ -23,6 +29,7 @@ describe 'puppet_dynamodb_otp' do
           {
             archive_source: 'http://localhost/special.tar.gz',
             install_method: 'archive',
+            aws_region: 'us-east-1',
           }
         end
 
@@ -34,6 +41,7 @@ describe 'puppet_dynamodb_otp' do
           {
             install_dir: '/opt/special',
             install_method: 'archive',
+            aws_region: 'us-east-1',
           }
         end
 
@@ -49,6 +57,7 @@ describe 'puppet_dynamodb_otp' do
             install_dir: '/opt/puppet-dynamodb-otp',
             install_method: 'archive',
             package_name: 'puppet-dynamodb-otp',
+            aws_region: 'us-east-1',
           }
         end
 
@@ -63,6 +72,7 @@ describe 'puppet_dynamodb_otp' do
             install_dir: '/opt/puppet-dynamodb-otp',
             install_method: 'package',
             package_name: 'puppet-dynamodb-otp',
+            aws_region: 'us-east-1',
           }
         end
 
@@ -76,6 +86,7 @@ describe 'puppet_dynamodb_otp' do
           {
             install_method: 'package',
             package_name: 'specialpackage',
+            aws_region: 'us-east-1',
           }
         end
 
@@ -88,6 +99,7 @@ describe 'puppet_dynamodb_otp' do
             install_method: 'package',
             package_name: 'puppet-dynamodb-otp',
             package_version: '42.42.42',
+            aws_region: 'us-east-1',
           }
         end
 
