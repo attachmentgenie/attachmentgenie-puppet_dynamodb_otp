@@ -6,11 +6,6 @@ describe 'puppet_dynamodb_otp' do
   on_supported_os.each do |os, facts|
     context "on #{os}" do
       let(:facts) { facts }
-      let(:pre_condition) do
-        [
-          'service { "puppetserver": ensure => running, }',
-        ]
-      end
 
       context 'with archive_source set to special.tar.gz' do
         let(:params) do
