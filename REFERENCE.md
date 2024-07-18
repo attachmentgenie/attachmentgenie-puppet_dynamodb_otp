@@ -12,6 +12,7 @@
 
 #### Private Classes
 
+* `puppet_dynamodb_otp::dropin`: Class to dropin puppet-dynamodb-otp.
 * `puppet_dynamodb_otp::install`: Class to install puppet-dynamodb-otp.
 
 ## Classes
@@ -29,19 +30,13 @@ Use this module to install and configure puppet-dynamodb-otp.
 
 The following parameters are available in the `puppet_dynamodb_otp` class:
 
-* [`archive_source`](#-puppet_dynamodb_otp--archive_source)
 * [`install_dir`](#-puppet_dynamodb_otp--install_dir)
 * [`install_method`](#-puppet_dynamodb_otp--install_method)
+* [`manage_dropin`](#-puppet_dynamodb_otp--manage_dropin)
 * [`package_name`](#-puppet_dynamodb_otp--package_name)
 * [`package_version`](#-puppet_dynamodb_otp--package_version)
-
-##### <a name="-puppet_dynamodb_otp--archive_source"></a>`archive_source`
-
-Data type: `Optional[Stdlib::HTTPUrl]`
-
-Location of puppet-dynamodb-otp binary release.
-
-Default value: `undef`
+* [`archive_source`](#-puppet_dynamodb_otp--archive_source)
+* [`aws_region`](#-puppet_dynamodb_otp--aws_region)
 
 ##### <a name="-puppet_dynamodb_otp--install_dir"></a>`install_dir`
 
@@ -55,6 +50,12 @@ Data type: `Enum['archive','package']`
 
 How to install puppet-dynamodb-otp.
 
+##### <a name="-puppet_dynamodb_otp--manage_dropin"></a>`manage_dropin`
+
+Data type: `Boolean`
+
+Manage the puppet-dynamodb-otp dropin.
+
 ##### <a name="-puppet_dynamodb_otp--package_name"></a>`package_name`
 
 Data type: `String[1]`
@@ -66,4 +67,20 @@ Name of package to install.
 Data type: `String[1]`
 
 Version of puppet-dynamodb-otp to install.
+
+##### <a name="-puppet_dynamodb_otp--archive_source"></a>`archive_source`
+
+Data type: `Optional[Stdlib::HTTPUrl]`
+
+Location of puppet-dynamodb-otp binary release.
+
+Default value: `undef`
+
+##### <a name="-puppet_dynamodb_otp--aws_region"></a>`aws_region`
+
+Data type: `Optional[String[1]]`
+
+AWS region to expose to the puppetserver service.
+
+Default value: `undef`
 
